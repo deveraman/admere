@@ -13,6 +13,8 @@ class RegistrationView extends StatefulWidget {
 class _RegistrationViewState extends State<RegistrationView> {
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme;
+
     return BlocListener<RegistrationBloc, RegistrationState>(
       listener: (context, state) {
         if (state is LocationServiceDisabled) {
@@ -20,7 +22,9 @@ class _RegistrationViewState extends State<RegistrationView> {
             context: context,
             builder: (context) => AlertDialog(
               title: const Text("Location Services are disabled!"),
-              content: const Text("Autocompletion will not work without enabling Location Services."),
+              content: const Text(
+                "Autocompletion will not work without enabling Location Services.",
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -36,7 +40,9 @@ class _RegistrationViewState extends State<RegistrationView> {
             context: context,
             builder: (context) => AlertDialog(
               title: const Text("Location access was denied!"),
-              content: const Text("Autocompletion will not work without access to Location Services."),
+              content: const Text(
+                "Autocompletion will not work without access to Location Services.",
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -68,6 +74,15 @@ class _RegistrationViewState extends State<RegistrationView> {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Register',
+            style: textStyle.titleLarge!.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+        ),
         body: Stack(
           children: const [
             CircularLoader(),
@@ -86,6 +101,7 @@ class _RegistrationViewState extends State<RegistrationView> {
             ),
           ],
         ),
+        backgroundColor: Colors.white,
       ),
     );
   }

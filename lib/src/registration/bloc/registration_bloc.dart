@@ -31,7 +31,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     );
   }
 
-  void _onRegistrationFormValidate(RegistrationFormValidate event, Emitter<RegistrationState> emit) {
+  void _onRegistrationFormValidate(
+      RegistrationFormValidate event, Emitter<RegistrationState> emit) {
     if (event.formKey.currentState!.validate()) {
       emit(const RegistrationFormValidated());
     }
@@ -45,7 +46,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
     try {
       final pos = await _determinePosition();
-      final dest = await _determineAddressFromCoordinates(pos.latitude, pos.longitude);
+      final dest =
+          await _determineAddressFromCoordinates(pos.latitude, pos.longitude);
 
       emit(const LocationAccessGranted());
 
@@ -103,7 +105,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     return Geolocator.getCurrentPosition();
   }
 
-  Future<List<Placemark>> _determineAddressFromCoordinates(double lat, double lon) async {
+  Future<List<Placemark>> _determineAddressFromCoordinates(
+      double lat, double lon) async {
     return placemarkFromCoordinates(lat, lon);
   }
 }

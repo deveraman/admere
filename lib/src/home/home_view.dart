@@ -18,9 +18,12 @@ class HomeView extends StatelessWidget {
               child: ColoredBox(
                 color: Colors.teal,
                 child: Center(
-                  child: Text('SET A', style: textStyle.displayLarge!.copyWith(fontWeight: FontWeight.bold),
+                  child: Text(
+                    'SET A',
+                    style: textStyle.displayLarge!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
               ),
             ),
           ),
@@ -30,7 +33,10 @@ class HomeView extends StatelessWidget {
               child: ColoredBox(
                 color: Colors.greenAccent,
                 child: Center(
-                  child: Text('SET B', style: textStyle.displayLarge!.copyWith(fontWeight: FontWeight.bold),
+                  child: Text(
+                    'SET B',
+                    style: textStyle.displayLarge!
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

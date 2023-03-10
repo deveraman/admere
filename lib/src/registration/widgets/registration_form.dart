@@ -26,7 +26,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
             builder: (context) => AlertDialog(
               title: const Text("Registration Successful!"),
               content: const Center(
-                child: RegistrationSuccess(),
+                child: Flexible(
+                  child: RegistrationSuccess(),
+                ),
               ),
               actions: <Widget>[
                 TextButton(
@@ -69,7 +71,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           },
                           onChanged: (String? value) {
                             context.read<RegistrationBloc>().add(
-                                  RegistrationFormChanged(firstName: value ?? ''),
+                                  RegistrationFormChanged(
+                                      firstName: value ?? ''),
                                 );
                           },
                           label: 'First Name',
@@ -90,7 +93,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           },
                           onChanged: (String? value) {
                             context.read<RegistrationBloc>().add(
-                                  RegistrationFormChanged(firstName: value ?? ''),
+                                  RegistrationFormChanged(
+                                      firstName: value ?? ''),
                                 );
                           },
                           label: 'Last Name',
@@ -147,7 +151,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           },
                           onChanged: (String? value) {
                             context.read<RegistrationBloc>().add(
-                                  RegistrationFormChanged(dob: value ?? state.dob),
+                                  RegistrationFormChanged(
+                                      dob: value ?? state.dob),
                                 );
                           },
                           label: 'Date of birth',
@@ -167,7 +172,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               lastDate: DateTime.now(),
                             );
 
-                            updateDobField('${date?.year}/${date?.month}/${date?.day}');
+                            updateDobField(
+                                '${date?.year}/${date?.month}/${date?.day}');
                           },
                           icon: const Icon(
                             Icons.calendar_today,
@@ -191,7 +197,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     },
                     onChanged: (String? value) {
                       context.read<RegistrationBloc>().add(
-                            RegistrationFormChanged(country: value ?? state.country),
+                            RegistrationFormChanged(
+                                country: value ?? state.country),
                           );
                     },
                     label: 'Country',
@@ -220,7 +227,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     },
                     onChanged: (String? value) {
                       context.read<RegistrationBloc>().add(
-                            RegistrationFormChanged(firstName: value ?? state.pincode),
+                            RegistrationFormChanged(
+                                firstName: value ?? state.pincode),
                           );
                     },
                     label: 'Pincode',
@@ -239,7 +247,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     },
                     onChanged: (String? value) {
                       context.read<RegistrationBloc>().add(
-                            RegistrationFormChanged(address: value ?? state.address),
+                            RegistrationFormChanged(
+                                address: value ?? state.address),
                           );
                     },
                     label: 'Address',

@@ -7,7 +7,6 @@ class TimelinePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final textStyle = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -175,4 +174,3 @@ final data = [
     ),
   ),
 ];
-

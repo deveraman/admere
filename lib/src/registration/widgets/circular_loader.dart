@@ -12,7 +12,7 @@ class CircularLoader extends StatelessWidget {
         if (state == const LocationRequesting()) {
           return const SizedBox(
             child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.black12),
+              decoration: BoxDecoration(color: Colors.white),
               child: Center(
                 child: CircularProgressIndicator(),
               ),
