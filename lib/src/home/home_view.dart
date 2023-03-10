@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: () => {},
+              onTap: () => context.go(TimelineScreenRoute().location),
               child: ColoredBox(
                 color: Colors.greenAccent,
                 child: Center(
