@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -9,6 +10,31 @@ part 'registration_state.dart';
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   RegistrationBloc() : super(const RegistrationInitial()) {
     on<RequestLocationPermissions>(_onRequestLocationPermissions);
+    on<RegistrationFormChanged>(_onRegistrationFormChanged);
+    on<RegistrationFormValidate>(_onRegistrationFormValidate);
+  }
+
+  void _onRegistrationFormChanged(
+    RegistrationFormChanged event,
+    Emitter<RegistrationState> emit,
+  ) {
+    emit(
+      RegistrationFormState(
+        firstName: event.firstName,
+        lastName: event.lastName,
+        email: event.email,
+        dob: event.dob,
+        country: event.country,
+        pincode: event.pincode,
+        address: event.address,
+      ),
+    );
+  }
+
+  void _onRegistrationFormValidate(RegistrationFormValidate event, Emitter<RegistrationState> emit) {
+    if (event.formKey.currentState!.validate()) {
+      emit(const RegistrationFormValidated());
+    }
   }
 
   Future<void> _onRequestLocationPermissions(
@@ -18,10 +44,20 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     emit(const LocationRequesting());
 
     try {
-      // final pos = await _determinePosition();
-      // final dest = await _determineAddressFromCoordinates(pos.latitude, pos.longitude);
+      final pos = await _determinePosition();
+      final dest = await _determineAddressFromCoordinates(pos.latitude, pos.longitude);
 
       emit(const LocationAccessGranted());
+
+      final date = DateTime(1900);
+
+      emit(
+        RegistrationFormState(
+          dob: '${date.year}/${date.month}/${date.day}',
+          country: dest.first.country ?? '',
+          pincode: dest.first.postalCode ?? '',
+        ),
+      );
     } on Exception catch (e) {
       switch (e) {
         case LocationServiceDisabledException():

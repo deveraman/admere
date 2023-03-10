@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
   const CustomFormField({
-    required this.controller,
+    required this.value,
+    required this.onChanged,
+    required this.validator,
     required this.label,
     super.key,
   });
 
-  final TextEditingController controller;
+  final String value;
   final String label;
+  final void Function(String? value) onChanged;
+  final String? Function(String? value) validator;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,9 @@ class CustomFormField extends StatelessWidget {
         FormField(
           builder: (field) {
             return TextFormField(
-              controller: controller,
+              initialValue: value,
+              onChanged: onChanged,
+              validator: validator,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
