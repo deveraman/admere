@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = GoRouter(
       routes: $appRoutes,
-      initialLocation: RegistrationScreenRoute().location,
+      initialLocation: TimelineScreenRoute().location,
     );
 
     return MaterialApp.router(
