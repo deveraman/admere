@@ -7,8 +7,15 @@ abstract class RegistrationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class RegistrationInitialized extends RegistrationEvent {
-  const RegistrationInitialized();
+class RequestLocationPermissions extends RegistrationEvent {
+  const RequestLocationPermissions();
+
+  @override
+  List<Object> get props => [];
+}
+
+class LocationPermissionsDenied extends RegistrationEvent {
+  const LocationPermissionsDenied();
 
   @override
   List<Object> get props => [];
