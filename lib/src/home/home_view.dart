@@ -1,6 +1,6 @@
-import 'dart:ui';
-
+import 'package:admere/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () => {},
+              onTap: () => context.go(RegistrationScreenRoute().location),
               child: ColoredBox(
                 color: Colors.teal,
                 child: Center(
